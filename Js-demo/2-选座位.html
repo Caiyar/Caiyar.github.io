@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>选座位</title>
+</head>
+<body>
+    <ul class="seats">
+    </ul>
+    <style>
+            ul {
+                margin: 0;
+                padding: 0;
+                list-style: none;
+                display: flex;
+                width: 160px;
+                flex-wrap: wrap;
+            }
+            ul li {
+                width: 30px;
+                height: 30px;
+                background: green;
+                margin: 5px;
+                color: white;
+                text-align: center;
+                line-height: 30px;
+                border-radius: 10px 10px 0 0;
+            }
+            ul li.disabled {
+                background: red;
+            }
+            ul li.selected::before {
+                content: "√";
+                /* background-color: antiquewhite; */
+            }
+    </style>
+
+    <script>
+        //getElementsByClassName('seats')是伪数组，要选择伪数组下的元素
+        var seatDom = document.getElementsByClassName("seats")[0];
+        var disabled = [9, 10];//2-0 被别人选中的座位
+
+        for(var i=0;i<16;i++){
+        //1-0.循环创建li
+            var li = document.createElement("li");
+
+        // 2-0.中间加点事件
+        // 2-2 点击后变为绿色
+            li.onclick=function(){
+                //element.classList.contains()检查指定的元素是否包含特定的类名。如果元素包含该类名，则返回
+                //若this(即li)的类名包含disbled (经过2-1的判断后),
+                if (!this.classList.contains("disabled")) {
+                    // 添加class(.selected)
+                    this.classList.add("selected");
+                }
+            }
+            
+        //2-1 被别人选中的座位是红色
+            if(disabled.includes(i)){
+            //若数组disabled内的元素 包含 循环里的座位号i；即disabled的元素'9'，对应数组的下标9
+                li.classList.add('disabled');
+            }
+        //1-1.往ul里添加li
+            seatDom.appendChild(li);
+        }
+    </script>
+</body>
+</html>
