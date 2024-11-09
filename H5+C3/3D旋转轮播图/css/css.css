@@ -1,0 +1,116 @@
+body{
+    /* 通过居中，从上往下 ，线性渐变设置背景 */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 100vh;
+    /* 从下往上线性渐变 */
+    background-image: linear-gradient(to top, #343372 0%, #9acbd4 100%);
+    overflow: hidden;
+}
+.shell{
+    position: relative;
+    /* 宽度占视口宽度的60% */
+    width: 60vw;
+    /* 高度占视口宽度的40% */
+    height: 40vw;
+    max-width: 380px;
+    max-height: 250px;
+    margin: 0;
+    color: white;
+    /* 透视效果:下面是观察者与z=0平面的距离  必须给父元素设置！！！！！！！！！！*/
+    perspective: 1000px;
+
+    /* 改变 变形的基准点 */
+    /* 变形原点为中心 */
+    transform-origin: center;
+
+}
+
+.content{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    /* 变形原点为中心 */
+    transform-origin: center;
+    /* 保持3D变换  要父元素用，但只会影响子元素！！！*/
+        /* 要父元素设置perspective:px; 才会有用！！！ */
+    transform-style: preserve-3d;
+    /* 变换：沿着z轴平移（translaZ,移动）-30vw,绕y轴旋转0度 */
+    transform: translateZ(-30vw) rotateY(0);
+    
+/*   动画：名称为carolsel,持续9秒，无限循环，缓动函数为cubic-bezier(0.77,0,0.175,1),动画结束后保持最后状态 */
+    animation: carousel 3s infinite cubic-bezier(0.77, 0, 0.175, 1) forwards;
+    /* cubic-bezier(x1,y1,x2,y2)范围x（0.0）y（1.1）
+                                取值范围是0~1
+                    x1,y1：第一个控制点坐标，决定动画开始时的加速度 
+                    x2,y2：第二个控制点坐标，决定动画结束前的减速模式
+    */
+}
+
+.item{
+    position: absolute;
+    width: 60vw;
+    height: 40vw;
+    max-width: 380px;
+    max-height: 250px;
+    /* 设置阴影 上 左右 下               透明   */
+    box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+    border-radius: 6px;
+
+    /* 背景图片等比例缩放并覆盖整个容器 */
+    background-size: cover;
+    /* 创建倒影效果 */
+    -webkit-box-reflect: below 25px -webkit-linear-gradient(transparent 50%, rgba(255, 255, 255, 0.3));
+}
+
+/* 位置相关的伪类选择器 */
+/* 第一个项目样式 */
+.item:nth-child(1){
+    background-image: url(/3D旋转轮播/images/01.jpg);
+    /* 变换  ：沿y轴旋转0度 沿z轴平移35vm */
+    transform: rotateY(0) translateZ(35vw);
+}
+/* 第二个项目样式 */
+.item:nth-child(2){
+    background-image: url(/3D旋转轮播/images/02.jpg);
+    /* 变换  ：沿y轴旋转120度 沿z轴平移35vm */
+    transform: rotateY(120deg) translateZ(35vw);/*少打了deg就挤一起了，QAQ*/
+}
+/* 第三个项目样式 */
+.item:nth-child(3){   
+    background-image: url(/3D旋转轮播/images/03.jpg);
+    /* 变换  ：沿y轴旋转120度 沿z轴平移35vm */
+    transform: rotateY(240deg) translateZ(35vw);
+}/*content里定义了叫carousel的名称*/
+
+@keyframes carousel {
+
+    0%,
+    17.5% {
+        /* 变换：   沿z轴平移-35vm    绕y旋转为0    */
+        transform: translateZ(-35vw) rotateY(0);
+    }
+
+    27.5%,
+    45% {
+        /* 变换：   沿z轴平移-35vm    绕y旋转为0    */
+        transform: translateZ(-35vw) rotateY(-240deg);
+    }
+
+    55%,
+    72.5% {
+        /* 变换：   沿z轴平移-35vm    绕y旋转为0    */
+        transform: translateZ(-35vw) rotateY(-360deg);
+    }
+
+    82.5%,
+    100% {
+        /* 变换：   沿z轴平移-35vm    绕y旋转为0    */
+        transform: translateZ(-35vw) rotateY(-360deg);
+    }
+}

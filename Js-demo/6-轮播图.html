@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <div class="box">
+            <ul class="slide">
+                <li><img src="../img/banner1.jpg" alt="" /></li>
+                <li><img src="../img/banner2.jpg" alt="" /></li>
+                <li><img src="../img/banner3.jpg" alt="" /></li>
+                <li><img src="../img/banner4.jpg" alt="" /></li>
+            </ul>
+        </div>
+
+        <button>上一个</button>
+        <button>下一个</button>
+
+        
+        <ul class="dots">
+            <li class="active"></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+        <style>
+            .box {
+                /* margin:0 auto; */
+                width: 200px;
+                /* height: 200px; */
+                overflow: hidden;
+                position: relative;
+            }
+            .box ul {
+                width: 600px;
+                margin: 0;
+                padding: 0;
+                list-style: none;
+
+                display: flex;
+                transition: all 1s;
+                /* 不能和display:none一起用，用其他方法隐藏可以 */
+            }
+            ul li {
+                background-color: red;
+                
+            }
+
+            ul li img {
+                width: 200px;
+                display: block;
+                /* vertical-align: middle; */
+            }
+            ul.dots{
+                width: 200px;
+                height: 40px;
+                display: flex;
+                position: absolute;
+                top: 180px;
+                left: 2px;
+            }
+            .dots li {
+                width: 20px;
+                height: 20px;
+                background-color: gray;
+                margin: 5px;
+                border-radius: 50%;
+                list-style: none;
+
+            }
+            .dots li.active {
+                background-color: red;
+            }
+            button{
+                margin: 20px;
+            }
+        </style>
+        <script>
+            var slide = document.querySelector("ul.slide");// <ul class="dots"></ul>
+            
+            //！！！ 获取静态的li 对其进行操作也不会变 目的：下标元素都不会变，作为备份一样的存在，随取随用
+            var lisq = document.querySelectorAll("ul.slide li");
+            
+            // getElementsByClassName 返回的是一个类数组对象，所以使用 [0] 可以访问第一个（也可能是唯一一个）具有该类名的元素
+            // getElementsByTagName("li")返回指定元素的子元素集合。 下面代码是：它返回了所有 <li> 标签的元素
+            //！！！ 获取动态的li ，进行操作会变。   
+            // var lisg = document.getElementsByClassName("slide")[0].getElementsByTagName("li");
+            
+            
+            var lis = slide.children;//获得元素节点子元素（数组）即：<div class="slide">下的li数组：lis[0]、lis[1]、lis[2]、lis[3]
+
+            var prev = document.querySelector("button:nth-of-type(1)");//获取button元素的第一个元素
+            var next = document.querySelector("button:nth-of-type(2)");//获取button元素的第二个元素
+            var dots = document.querySelectorAll(".dots li");//获取所有跳转点
+
+            var index = 0;//默认显示第一张，下标为[0]
+
+            // 目的：删掉不相关的图片，做法:删掉后再添加一个进去
+            slide.innerHTML = "";       //删掉所有的图片
+            slide.appendChild(lisq[0]); //删掉后再添加第一张图进去，目的：删掉不相关的图片
+            var canClick = true;        //允许点击 目的：为了后面防止用户点击过快，导致程序效果出错
+
+            // ul.insertBefore(lis[2], lis[0].nextElementSibling);
+
+        // 1.导航点 的点击事件
+            dots.forEach((item, i) => {
+                // 点击元素事件
+                item.onclick = function () {
+                    if (canClick) {      //若点击后，是允许运行
+                        canClick = false;//禁止点击
+                        change(i);       //执行方法：改变导航点样式。 i是：点击的导航点下标
+                    }
+                };
+            });
+            
+        //2.点击导航点发生的改变，图片无缝切换什么的
+            function change(i) {            
+                console.log("2.点击导航点，跳转后的图", i); //根据下标i（1.传入的下标i）改变
+                
+            //2-1 当点击的i与当前下标index的导航点相等，则变为红色
+                dots.forEach((item, index) => {
+                    if (i === index) {                 
+                        item.classList.add("active");//点击的i 是 当前导航点下标index，则变为红色
+                    } else {
+                        console.log("我是i不是"+ index+"时");
+                        item.classList.remove("active");//其他保持不变
+                    }
+                });
+                console.log("1.还没发生跳转的时候的图", index);//这里的index，是之前声明的全局变量 index=0
+
+            // 2-2 从当前图一（默认一开始为0） 点击 其他（后面的！）图。 例：从图一到图四
+                if (i > index) {
+                    // 后面插入图片
+                    slide.style.transition = "all 1s";//过渡一秒
+                    
+                    // insertBefore(要插入的新元素，被插入的元素的 前面) 
+                    // node.nextElementSibling: 元素的下一个兄弟元素
+                    //下面代码：将静态数组的新元素i 插入 点击的 图i在动态数组数组lis的第一个后面（lis[1]的前面），插入新元素：点击的 图i
+                    slide.insertBefore(lisq[i], lis[0].nextElementSibling);
+                    slide.style.marginLeft = "-200px";  //左移200px，显示后面插入的图
+                    // 2.2.1 一秒后，要移动到下一张图
+                    setTimeout(() => {
+                        slide.style.transition = "none";//一秒后，没有过渡 目的：移除第一张图的时候，不会有被移动删除的动画
+                        slide.style.marginLeft = "0";   //移到第一张图的位置
+                        slide.removeChild(lis[0]);      //删除lis的子节点[0]，即第一张图 目的：直接显示后面的图
+                        index = i;                      //当前显示的图index 变成 点击的图i
+                        canClick = true;                //动画完成后允许点击 目的：防止用户点太快，效果错乱
+                    }, 1000);
+                    
+            // 2-3 从当前图 点击 其他（前面的！）图。 例：从图四到图一    
+                } else if (i < index) {
+                    // 前面插入图片
+                    slide.style.transition = "none";    //在前面插入会有动画效果，所以要先关闭
+                    slide.insertBefore(lisq[i], lis[0]);//在当前显示的图片前面 插入 点击的图片
+                    slide.style.marginLeft = "-200px";  //此时还是 当前显示的图片
+                    
+                    // 2.2.1 异步处理 
+                    setTimeout(() => {
+                        slide.style.transition = "all 1s";
+                        slide.style.marginLeft = "0";
+                        // 一秒后，移动到上一张图
+                        setTimeout(() => {
+                            slide.removeChild(lis[1]);  //！因为是前面插入图片，所以lis[0]是插入的图片，要删除下标为[2]的图
+                            index = i;
+                            canClick = true;
+                        }, 1000);
+                    }, 0);
+            //2-4若点击的是同一个点，允许继续点击 （不然的话，点击同一个点后，页面什么点不了，因为此时canClick=false）    
+                }else{
+                    canClick=true;
+                }
+            }
+
+        // 3. 按钮：上一张 的点击事件
+            prev.onclick = function () {
+
+                // 目的：控制图一 左滑 切换到图四，无缝切换
+                if (canClick) {
+                    canClick = false;
+                    var i = index - 1;       //点击按钮 index 是当前显示的图下标 ，所以i代表：上一张图
+                    if (i < 0) {             //!!全局变量index=0，显示的是第一张图。 
+                        i = lisq.length - 1; //!!小于零 代表第一张图的上一张图，跳转到最后一张图 即图四（此时还没向左滑到图四的过渡）
+                    }
+                // 3-1 导航点会随着 点击按钮 而改变颜色(copy)
+                    dots.forEach((item, index) => {
+                        if (i === index) {
+                            item.classList.add("active");
+                        } else {
+                            item.classList.remove("active");
+                        }
+                    });
+
+                //3-2 前面插入（copy）
+                    slide.style.transition = "none";
+                    slide.insertBefore(lisq[i], lis[0]);
+                    slide.style.marginLeft = "-200px";
+                    // 3.2.1 异步处理
+                    setTimeout(() => {
+                        slide.style.transition = "all 1s";
+                        slide.style.marginLeft = "0";
+                        // 一秒后，要移动到上一张图                        
+                        setTimeout(() => {
+                            slide.removeChild(lis[1]);
+                            index = i;
+                            canClick = true;
+                        }, 1000);
+                        },
+                    0);
+                }
+            };
+        // 4. 按钮：下一张 的点击事件
+            next.onclick = function () {
+                
+                 // 目的：控制图四 由滑 切换到图一，无缝切换
+                if (canClick) {
+                    canClick = false;
+                    var i = index + 1;
+                    if (i > lisq.length - 1) {
+                        i = 0;
+                    }
+
+                    dots.forEach((item, index) => {
+                        if (i === index) {
+                            item.classList.add("active");
+                        } else {
+                            item.classList.remove("active");
+                        }
+                    });
+                    // 后面插入
+                    slide.style.transition = "all 1s";
+                    slide.insertBefore(lisq[i], lis[0].nextElementSibling);
+                    slide.style.marginLeft = "-200px";
+                    setTimeout(() => {
+                        slide.style.transition = "none";
+                        slide.style.marginLeft = "0";
+                        slide.removeChild(lis[0]);
+                        index = i;
+                        canClick = true;
+                    }, 1000);
+                }
+            };
+        </script>
+
+        <!-- 以下代码 用于测试 querySelectorAll 和 getElementsByClassName 的区别 -->
+        <!-- <ul class="test">
+            <li class="xxx">1</li>
+            <li class="xxx yyy">2</li>
+            <li class="xxx">3</li>
+        </ul>
+        <script>
+            var lisquery = document.querySelectorAll(".test li.xxx"); // 静态的
+            var lisgetElements = document.getElementsByClassName("xxx"); // 动态的
+
+            console.log(lisquery);
+            console.log(lisgetElements);
+
+            // 把xxx去掉
+            // for (var i = 0; i < lisquery.length; i++) {
+            //     lisquery[i].classList.remove("xxx");
+            // }
+
+            document.querySelector("ul.test").removeChild(lisquery[1]);
+
+            console.log(lisquery);
+            console.log(lisgetElements);
+        </script> -->
+    </body>
+</html>

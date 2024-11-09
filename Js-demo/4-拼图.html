@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Document</title>
+        <title>拼图</title>
         <style>
             ul.stage{
                 /* 重置样式 */
@@ -46,21 +46,27 @@
                 left: 0;
                 top: 0;
             }
+            button{
+                width: 100px;
+                height: 50px;
+                background-color: aqua;
+            }
         </style>
     </head>
     <body>
         <ul class="stage">
-            <li><img src="../img/banner1.jpg" alt="" /></li>
-            <li><img src="../img/banner1.jpg" alt="" /></li>
-            <li><img src="../img/banner1.jpg" alt="" /></li>
-            <li><img src="../img/banner1.jpg" alt="" /></li>
-            <li><img src="../img/banner1.jpg" alt="" /></li>
-            <li><img src="../img/banner1.jpg" alt="" /></li>
-            <li><img src="../img/banner1.jpg" alt="" /></li>
-            <li><img src="../img/banner1.jpg" alt="" /></li>
-            <li><img src="../img/banner1.jpg" alt="" /></li>
+            <li><img src="../2.10.8/img/1.jpg" alt=""></li>
+            <li><img src="../2.10.8/img/1.jpg" alt=""></li>
+            <li><img src="../2.10.8/img/1.jpg" alt=""></li>
+            <li><img src="../2.10.8/img/1.jpg" alt=""></li>
+            <li><img src="../2.10.8/img/1.jpg" alt=""></li>
+            <li><img src="../2.10.8/img/1.jpg" alt=""></li>
+            <li><img src="../2.10.8/img/1.jpg" alt=""></li>
+            <li><img src="../2.10.8/img/1.jpg" alt=""></li>
+            <li><img src="../2.10.8/img/1.jpg" alt=""></li>
         </ul>
 
+        <button>重置</button>
         <script>
             var stage = document.querySelector(".stage");
             var lis = stage.querySelectorAll("li");
@@ -77,10 +83,12 @@
             //       return a-b; //升序!！（负数，小的数往前排）
             //       return b-a; //降序!! (负数，大的数往前排)
             // }
-            //Math.random() - 0.5 ：生成一个介于 -0.5 和 0.5 之间的随机数。作为sort函数的返回值，判断排列顺序。
+            //Math.random() - 0.5 ：生成一个介于 -0.5 和 0.5 之间的随机数。例：
+            // 作为sort函数的返回值，判断排列顺序。
         //！！！由于返回的数是随机的，sort() 方法会根据这些随机数 随机地排序数组的元素
             
         // 1.变成9*9的拼图
+        
             lis.forEach((li, index) => {//li就是lis伪数组的 item（元素）
                 //1-1添加li的自定义属性 < li dataset.o="" dataset.c=""></li>
                 li.dataset.o = index;         //静态的 < li dataset.o="index"><li>
@@ -100,7 +108,7 @@
 
         //2. 点击事件
             //2-2
-            var clickedLis = [];//要交换的两个元素
+            var clickedLis = [];//存储当前点击的两个li元素
             stage.onclick = function (event) { 
             //2-1 下面筛选出，点击IMG和li事件时，会选中当前点击的li元素。其他情况的话，无操作
                 //tagName 属性在 JavaScript 中的作用是返回一个元素的标签名，这个标签名是一个大写的字符串
@@ -125,11 +133,11 @@
                     // 例子:  < li dataset.o="index" dataset.c="0"></li> 和
                     //        < li dataset.o="index" dataset.c="1"></li> 互换
                     clickedLis.push(target);
-                    target.classList.add("active");
+                    target.classList.add("active");//变红
 
-                // 判断长度是2,两个交换
+                //2-5（交换拼图）两个交换，判断长度是2
                     if (clickedLis.length === 2) {
-                
+                        // 确保在用户点击操作后，拼图块的交换效果有足够的时间展示给用户看。
                         setTimeout(() => {
                             // 交换data-c
                             var tmp = clickedLis[0].dataset.c;
@@ -139,23 +147,23 @@
                             clickedLis[0].dataset.c = clickedLis[1].dataset.c;// 通过.dataset.c 来访问这个 data-c属性的值
                             clickedLis[1].dataset.c = tmp;
 
-                // //2-5 交换后，考虑交换完成后的拼图 的位置
+                // //2-6 交换后，考虑交换完成后的拼图 的位置
                             clickedLis.forEach((li) => {
                                 li.style.top = Math.floor(li.dataset.c / 3) * 100 + 10 + "px";
                                 li.style.left = (li.dataset.c % 3) * 100 + 10 + "px";
                             });
 
                             // 等待过渡完成之后
-                            console.log(777);
-
+                            // console.log(777);
                             var canClick = true;
                             
-                            // clickedLis[0]的背景颜色过渡完成后，
+                            
                             // ontransitionend 是一个事件处理器属性，它用于在 CSS 过渡（transition）完成时，触发一个事件。
+                            // clickedLis[0]的背景颜色过渡完成后，才完成操作
                             clickedLis[0].ontransitionend = function () {
                                 if (canClick) {
                                     canClick = false;
-                                    console.log(this, 123);//控制台将打印出 "this, 123"
+                                    // console.log(this, 123);//控制台将打印出 "this, 123"
 
                                 
                                     // 判断是否拼图完成
@@ -169,7 +177,8 @@
                                         alert("拼图完成");
                                     }
                                     
-
+                                    // 防止连续快速点击：通过设置这个延迟，可以防止用户在动画完成之前连续快速点击，
+                                    // 这样可以确保拼图块有足够的时间完成它们的动画过渡，避免因为用户操作过快而导致的逻辑错误或界面混乱。
                                     setTimeout(() => {
                                         canClick = true;
                                     }, 100);
@@ -185,6 +194,32 @@
                     }
                 }
             };
+
+
+        // 获取按钮元素
+        var resetButton = document.querySelectorAll('button')[0];
+
+        // 为按钮添加点击事件处理器
+        resetButton.onclick = function() {
+            // 重新打乱拼图的逻辑
+            var arr = [];
+            for (var i = 0; i < lis.length; i++) {
+                arr.push(i);
+            }//[0,1,2,3,4,5,6,7,8]
+            arr.sort(() => Math.random() - 0.5);//比如随机数为-0.2 -0.1 0.1 0.2 0.3...
+                                                //对应数组的 ： 1    2   3   4   5
+
+            lis.forEach((li, index) => {
+                li.dataset.c = arr[index];
+
+                li.style.top = Math.floor(li.dataset.c / 3) * 100 + 10 + "px";
+                li.style.left = (li.dataset.c % 3) * 100 + 10 + "px";
+
+                var img = li.querySelector("img");
+                img.style.top = Math.floor(index / 3) * -96 + "px";
+                img.style.left = (index % 3) * -96 + "px";
+            });
+        };
         </script>
 
     </body>

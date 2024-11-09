@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>旋转的立方体</title>
+	</head>
+	<style>
+		html,body{
+			margin: 0;
+			padding: 0;
+			background: linear-gradient()
+		}
+		/* 给每个div设置宽高，水平垂直居中 */
+		.container,
+		.container .outer,
+		.container .inner,
+		.container .inner div{
+			width: 16rem;
+			height: 16rem;
+			font-size: 1.8rem;
+			text-align: center;
+			line-height: 16rem;
+		}
+		/* 设置container的旋转效果，取名为roate_y,4秒、线性变化、无线循环 */
+		.container{
+			margin: 0 auto;
+			animation: roate_y 4s linear infinite;
+			transform-style: preserve-3d;
+		}
+		/* 立方体以Y轴为中心，旋转360度 之后每4s重复*/
+		@keyframes roate_y{
+			from{transform: rotateY(0);}
+			to{transform: rotateY(360deg);}
+		}
+		/* 将正着面对我们的立方体绕X轴旋转55度
+		 * 即本来“下”有4个点在水平，旋转后只有两个点在下面
+		 */
+		.container .outer{
+			transform-style: preserve-3d;
+			transform: rotateX(55deg);
+		}
+		/*  在上面的基础上绕Y轴旋转，最后“下”只有一个点在下面，
+		 * 也就我们看到立方体的一个点支撑起整个立方体的效果
+		 */
+		.container .inner{
+			transform-style: preserve-3d;
+			transform: rotateY(45deg);
+			position: relative;
+		}
+		.container .inner div{
+			transform-style: preserve-3d;
+			position: absolute;
+		}
+		
+		/* 单独设置每个面的旋转角度 */
+		.container .plane-1{
+			/* 设置右向右移-80px，并绕Y轴旋转90度，我们看到的效果是一条竖线“|”，
+			*  因为后面的面积被“|”挡住了，下面的每个面同理。
+			* 即每个面初始是面对我们的，即“口”，然后我们需要对齐进行旋转和移动得到正方体的每个面
+			*/
+			/* background: rgba(127,127,255,0.3); */
+			background:url('./images/1.jpg') ;
+			background-size:cover;
+			background-position: center;
+			right: -8rem;
+			transform: rotateY(90deg);
+		}
+		.container .plane-2{
+			/* background: rgba(127,255,255,0.3); */
+			background:url('./images/2.jpg') ;
+			background-size:cover;
+			background-position: center;
+			left: -8rem;
+			transform: rotateY(90deg);
+		}
+		.container .plane-3{
+			/* background: rgba(127,255,255,0.3); */
+			background:url('./images/3.jpg') ;
+			background-size:cover;
+			background-position: center;
+			transform: translateZ(-8rem);
+		}
+		.container .plane-4{
+			/* background: rgba(0,255,255,0.3); */
+			background:url('./images/4.jpg') ;
+			background-size:cover;
+			background-position: center;
+			transform: translateZ(8rem);
+		}
+		.container .plane-5{
+			/* background: rgba(0,225,127,0.3); */
+			background:url('./images/5.jpg') ;
+			background-size:cover;
+			background-position: center;
+			transform: rotateX(-90deg);
+			bottom: -8rem;
+		}
+		.container .plane-6{
+			/* background: rgba(127,127,127,0.3); */
+			background:url('./images/6.jpg') ;
+			background-size:cover;
+			background-position: center;
+			transform: rotateX(-90deg);
+			top: -8rem;
+		}
+	</style>
+	<body>
+		<br><br><br><br><br>
+		<div class="container">
+			<div class="outer">
+				<div class="inner">
+					<div class="plane-1"></div>
+					<div class="plane-2"></div>
+					<div class="plane-3"></div>
+					<div class="plane-4"></div>
+					<div class="plane-5"></div>
+					<div class="plane-6"></div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

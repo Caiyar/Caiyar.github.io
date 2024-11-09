@@ -1,0 +1,26 @@
+/* 重置样式 */
+html,body{
+    margin: 0;
+}
+
+h1,h2,h3,h4,h5,h6,p{
+    margin: 0;
+
+    /* 去掉 字体加粗 */
+    font-weight: normal;
+}
+
+ul,ol,li{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+input{
+    padding: 0;
+    border: none;
+    outline: none;
+}
+
+/* a标签的默认样式 */
+/* 预设样式 */

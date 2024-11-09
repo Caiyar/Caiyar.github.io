@@ -1,0 +1,473 @@
+/* 登陆注册 */
+.topbox{
+    width: 100%;
+    height: 36px;
+    background-color: gray;
+}
+.topbox>span{
+    float: right;
+    color: white;
+    line-height: 36px;
+    margin-right: 200px;
+}
+/* 搜索栏总体 */
+.navbar{
+    width: 100%;
+    height: 120px;
+}
+.container{
+    width: calc(100% - (200px*2));
+    height: 120px;
+    /* background-color: rgba(91, 61, 121, 0.295); */
+    margin: 0 auto;
+
+    position: relative;
+}
+/* logo */
+.navbar .logo{
+    float: left;
+    width: 215px;
+    height: 60px;
+    /* background-color: aqua; */
+    margin-top: 40px;
+}
+.nav{
+    float: left;
+    width: 400px;
+    height: 35px;
+    /* background-color: aqua; */
+    margin-left:  250px;
+    margin-top: 60px;
+}
+.navbar .nav>input{
+    float: left;
+    width: 300px;
+    height: 35px;
+    border: 2px solid#2b6e5a;
+    border-radius: 50px 0 0 50px;
+    box-sizing: border-box;
+    padding-left: 60px;
+
+}
+.navbar .nav>img {
+    position: absolute;
+    top: 69px;
+    left: 470px;
+}
+.navbar .nav-action{
+    float: left;
+    width: 100px;
+    height: 35px;
+    background-color: #2b6e5a;
+    color: white;
+    border-radius: 0 50px 50px 0;
+
+    line-height: 35px;
+    text-align: center;
+    box-sizing: border-box;
+
+}
+
+/* 购物车*/
+.car{
+    float: right;
+    width: 160px;
+    height: 35px;
+    border: 2px solid#3d403f;
+    border-radius: 50px;
+    margin-top: 60px;
+
+    box-sizing: border-box;
+    font-size: 13px;
+    line-height: 35px;
+    text-align: center;
+    color: #3d403f;
+}
+.left-car img{
+    width: 22px;
+    height: 22px;
+    position: absolute;
+    top: 66px;
+    right: 125px;
+}
+.right-point img{
+    width: 22px;
+    height: 22px;
+    position: absolute;
+    top: 66px;
+    right: 13px;
+}
+
+/* 导航栏 */
+.navbar1{
+    width: 100%;
+    height: 70px;
+}
+.navbar1 .container{
+    width: calc(100% - (200px*2));
+    height:  70px;
+    margin: 0 auto;
+
+}
+.navbar1 .container .ll{
+    width: 800px;
+    height:  70px;
+    margin: 0 auto;
+    box-sizing: border-box;
+}
+.navbar1 .container li{
+    font-size: 16px;
+    float: left;
+    margin-left: 70px;
+    margin-top: 33px;
+    color: #3d403f;;
+}
+
+/* 轮播图图片 */
+.banner{
+    width: 100%;
+    height: 320px;
+    background-color: #3d403f;
+}
+.banner img{
+    width: 100%;
+    height: 320px;
+}
+
+/* 新品首发 */
+.first{
+    width: 100%;
+    height: 70px;
+
+}
+.first .container{
+    width: calc(100% - (200px*2));
+    height:  70px;
+    margin: 0 auto;
+    border-bottom:2px solid #9191911b;;
+    box-sizing: border-box;
+    padding-top: 30px;
+}
+.first .container ul{
+    margin-top: 9px;
+    margin-left: 10px;
+    float: left;
+}
+.first .container li{
+    margin-left: 30px;
+    float: left;
+
+}
+
+.first .container h2{
+    float: left;
+    border-bottom:3px solid green;
+}
+.first .container span{
+    color: #636363ae;
+    font-size: 13px;
+    float: right;
+    margin-top: 10px;
+}
+
+/* 新品首发的图片们 */
+.first-box{
+    width: 100%;
+    height: 350px;
+    position: relative;
+}
+.first-box .container{
+    width: calc(100% - (200px*2));
+    height:  400px;
+    margin: 0 auto;
+}
+.first-box .container .sale-box{
+    width: 100%;
+    height:  350px;
+    margin: 0 auto;
+}
+.first-box .sale-box >div{
+    width: calc((25% - 20px) + 5px);
+    height: 350px;
+    /* background-color: brown; */
+    float: left;
+    margin-right: 20px;
+}
+.first-box .container img{
+    width: 240px;
+    height: 240px;
+    float: left;
+    margin-left: 13px;
+    margin-top: 40px;
+}
+.first-box .container .last{
+    margin-right: 0;
+} 
+
+
+/* details */
+.first-box .container .details{
+    text-align: center;
+    padding: 0 10px;
+    box-sizing: border-box;
+}
+.first-box .container .details .name{
+    font-size: 14px;
+    color: gray;
+}
+.first-box .container .details .txt{
+    color: rgba(128, 128, 128, 0.471);
+    font-size: 14.5px;
+}
+
+/* 左右按钮 */ 
+.first-box .left-point>img{
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    top: 140px;
+    left: 100px;
+}
+.first-box .right-point>img{
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    top: 140px;
+    right: 100px;
+}
+
+
+/* second */
+.second-box{
+    width: 100%;
+    height: 350px;
+    position: relative;
+}
+.second-box .container{
+    width: calc(100% - (200px*2));
+    height: 350px;
+    margin: 0 auto;
+}
+.second-box .container .sale-box{
+    width: 100%;
+    height:  350px;
+    margin: 0 auto;
+}
+.second-box .sale-box >div{
+    width: calc((25% - 20px) + 5px);
+    height: 350px;
+    /* background-color: brown; */
+    float: left;
+    margin-right: 20px;
+}
+.second-box .container img{
+    width: 240px;
+    height: 240px;
+    float: left;
+    margin-left: 13px;
+    margin-top: 0;
+}
+.second-box .container .last{
+    margin-right: 0;
+} 
+
+
+/* details */
+.second-box .container .details{
+    text-align: center;
+    padding: 0 10px;
+    box-sizing: border-box;
+}
+.second-box .container .details .name{
+    font-size: 14px;
+    color: gray;
+}
+.second-box .container .details .txt{
+    color: rgba(128, 128, 128, 0.471);
+    font-size: 14.5px;
+}
+
+
+/* banner1 */
+.banner1 img{
+    width: 100%;
+    height: 130px;
+}
+
+/* third*/
+.third-box{
+    width: 100%;
+    height: 350px;
+    position: relative;
+}
+.third-box .container{
+    width: calc(100% - (200px*2));
+    height: 350px;
+    margin: 0 auto;
+}
+.third-box .container .sale-box{
+    width: 100%;
+    height:  350px;
+    margin: 0 auto;
+}
+.third-box .sale-box >div{
+    width: calc((25% - 20px) + 5px);
+    height: 350px;
+    /* background-color: brown; */
+    float: left;
+    margin-right: 20px;
+}
+.third-box .container img{
+    width: 240px;
+    height: 240px;
+    float: left;
+    margin-left: 13px;
+    margin-top: 0;
+}
+.third-box .container .last{
+    margin-right: 0;
+} 
+
+
+/* details */
+.third-box .container .details{
+    text-align: center;
+    padding: 0 10px;
+    box-sizing: border-box;
+}
+.third-box .container .details .name{
+    font-size: 14px;
+    color: gray;
+}
+.third-box .container .details .txt{
+    color: rgba(128, 128, 128, 0.471);
+    font-size: 14.5px;
+}
+
+/* 生活家晒单的图片们 */
+.daily-box{
+    width: 100%;
+    height: 450px;
+    position: relative;
+}
+.daily-box.container{
+    width: calc(100% - (200px*2));
+    height:  450px;
+    margin: 0 auto;
+}
+.daily-box .container .sale-box{
+    width: 100%;
+    height: 450px;
+    margin: 0 auto;
+}
+.daily-box .sale-box >div{
+    width: calc((33.333% - 27px) + 9px);
+    height: 450px;
+    /* background-color: brown; */
+    float: left;
+    margin-right: 27px;
+}
+.daily-box .container img{
+    width: 354.5px;
+    height: 300px;
+    float: left;
+
+    margin-top: 40px;
+}
+.daily-box .container .last{
+    margin-right: 0;
+} 
+
+
+/* 底部 */
+.dowm1{
+    width: 100%;
+    height: 150px;
+    background-color: #222222;
+}
+.dowm1 .container{
+    width: calc(100% - (200px*2));
+    height: 150px;
+    border-bottom:2px solid #9c9c9c;
+    margin: 0 auto;
+    box-sizing: border-box;
+}
+.dowm1 .container>div{
+    width: calc((20% - 30px) + 6px);
+    height: 150px;
+    /* background-color: brown; */
+    float: left;
+    margin-right: 30px;
+}
+.dowm1 .container .last{
+    margin-right: 0;
+}
+.dowm1 .container img{
+    margin-left: 75px;
+    margin-top: 30px;
+} 
+.dowm1 .container .txt{
+    text-align: center;
+    color: white;
+}
+
+.dowm2{
+    width: 100%;
+    height: 200px;
+    background-color: #222222;
+}
+.dowm2 .container{
+    width: calc(100% - (200px*2));
+    height: 200px;
+    /* background-color: #3d403f; */
+    background-color: #222222;
+    position: relative;
+}
+
+.dimg{
+    float: left;
+    position: absolute;
+    top: 30px;
+    left: 80px;
+
+}
+.container .upul{
+    margin-left: 400px;
+    font-size: 16px;
+    color: rgb(181, 181, 181);
+}
+.container .upul>li{
+    float: left;
+    margin-left: 80px;
+    margin-top: 30PX;
+}
+.list-two{
+    position: absolute;
+    top: 60px; 
+}
+.list-two>li{
+    margin-top: 10PX;
+}
+.down3{
+    height: 60px;
+    width: 100%;
+    background-color: #333333;
+    line-height: 60px;
+    text-align: center;
+}
+
+.lujin{
+    width: 100%;
+    height: 70px;
+    background-color: #f8f8f8;
+    margin-left: 5px;
+}
+.lujin .container{
+    width: 1120px;
+    height:  50px;
+    margin: 0 auto;
+    line-height: 50px;
+    box-sizing: border-box;
+    padding: 5px;
+    font-size: 13px;
+}

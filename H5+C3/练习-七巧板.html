@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <canvas id="canvas" width="500" height="500"></canvas>
+
+    <script>
+        var canvas = document.querySelector('#canvas')
+
+        var ctx = canvas.getContext('2d')
+
+        // 第一个
+        ctx.beginPath()
+
+        ctx.moveTo(0,0)
+
+        ctx.lineTo(500,0)
+
+        ctx.lineTo(250,250)
+        
+        ctx.fillStyle = 'green'
+
+        ctx.fill()
+
+
+        ctx.beginPath()
+
+        ctx.moveTo(0,0)
+
+        ctx.lineTo(0,500)
+
+        ctx.lineTo(250,250)
+        
+        ctx.fillStyle = 'yellow'
+
+        ctx.fill()
+
+        ctx.beginPath()
+        ctx.moveTo(500,0)
+        ctx.lineTo(500,250)
+        ctx.lineTo(375,125)
+        ctx.fillStyle = 'blue'
+
+        ctx.fill()
+
+        ctx.beginPath()
+        ctx.moveTo(250,250)
+        ctx.lineTo(375,125)
+        ctx.lineTo(500,250)
+        ctx.lineTo(375,375)
+
+        ctx.fillStyle = 'red'
+
+        ctx.fill()
+
+        ctx.beginPath()
+        ctx.moveTo(250,250)
+        ctx.lineTo(375,375)
+        ctx.lineTo(125,375)
+
+        ctx.fillStyle = 'skyblue'
+
+        ctx.fill()
+
+        ctx.beginPath()
+        ctx.moveTo(0,500)
+        ctx.lineTo(125,375)
+        ctx.lineTo(375,375)
+        ctx.lineTo(250,500)
+
+        ctx.fillStyle = 'purple'
+        ctx.fill()
+
+        ctx.beginPath()
+        ctx.moveTo(500,250)
+        ctx.lineTo(250,500)
+        ctx.lineTo(500,500)
+
+        ctx.fillStyle = 'orange'
+
+        ctx.fill()
+
+
+    </script>
+</body>
+</html>

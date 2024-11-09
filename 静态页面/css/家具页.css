@@ -1,0 +1,365 @@
+/* 登陆注册 */
+.topbox{
+    width: 100%;
+    height: 36px;
+    background-color: gray;
+}
+.topbox>span{
+    float: right;
+    color: white;
+    line-height: 36px;
+    margin-right: 200px;
+}
+/* 搜索栏总体 */
+.navbar{
+    width: 100%;
+    height: 120px;
+}
+.navbar .container{
+    width: 1120px;
+    height: 120px;
+    /* background-color: rgba(91, 61, 121, 0.295); */
+    margin: 0 auto;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav{
+    width: 400px;
+    height: 35px;
+    /* background-color: rgb(152, 255, 255); */
+}
+.navbar .nav>input{
+    width: 300px;
+    height: 35px;
+    border: 2px solid#2b6e5a;
+    border-radius: 50px 0 0 50px;
+    box-sizing: border-box;
+    padding-left: 60px;
+}
+.navbar .nav-action{
+    float: right;
+    width: 100px;
+    height: 35px;
+    background-color: #2b6e5a;
+    color: white;
+    border-radius: 0 50px 50px 0;
+
+    line-height: 35px;
+    text-align: center;
+    box-sizing: border-box;
+}
+/* 购物车*/
+.car{
+    width: 160px;
+    height: 35px;
+    border: 2px solid#3d403f;
+    border-radius: 50px;
+
+
+    box-sizing: border-box;
+    font-size: 13px;
+    line-height: 35px;
+    text-align: center;
+    color: #3d403f;
+    
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.car img{
+    width: 22px;
+    height: 22px;
+}
+
+/* 导航栏 */
+.navbar1{
+    width: 100%;
+    height: 70px;
+
+}
+.navbar1 .container{
+    width: 1120px;
+    height:  70px;
+    margin: 0 auto;
+
+}
+.navbar1 .container .ll{
+    width: 800px;
+    height:  70px;
+    margin: 0 auto;
+    box-sizing: border-box;
+}
+.navbar1 .container li{
+    font-size: 16px;
+    float: left;
+    margin-left: 70px;
+    margin-top: 33px;
+    color: #3d403f;;
+}
+
+
+.lujin{
+    width: 100%;
+    height: 70px;
+    background-color: #f8f8f8;
+    margin-left: 5px;
+}
+.lujin .container{
+    width: 1120px;
+    height:  50px;
+    margin: 0 auto;
+    line-height: 50px;
+    box-sizing: border-box;
+    padding: 5px;
+    font-size: 13px;
+}
+
+
+
+.table{
+    width: 100%;
+    height: 120px;
+    background-color: #f8f8f8;
+}
+.table .container{
+    width: 1120px;
+    height: 120px;
+    margin: 0 auto;
+    background-color: white;
+}
+.container .sort{
+    width: 1100px;
+    height: 40px;
+    margin-left: 10px;
+    margin-right: 10px;
+    /* background-color: #2b6e5a; */
+    border-bottom: 1px solid rgba(180, 180, 180, 0.067);
+    box-sizing: border-box;
+    font-size: 13px;
+    display: flex;
+}
+.table .container .sort>.one{
+    width: 30px;
+    height: 40px;
+    color: gray;
+    line-height: 40px;
+    box-sizing: border-box;
+    float: left;
+    margin-right: 30px;
+}
+.table .container .sort>.two{
+    width: 450px;
+    height: 40px;
+    display: flex;
+    justify-content: space-between;
+}
+.table .container .sort>.two>.all{
+    line-height: 40px;
+}
+
+
+
+.container .pattern{
+    width: 1100px;
+    height: 40px;
+    margin-left: 10px;
+    margin-right: 10px;
+    border-bottom: 1px solid rgba(180, 180, 180, 0.067);
+    box-sizing: border-box;
+    font-size: 13px;
+    display: flex;
+}
+.table .container .pattern>.one{
+    width: 30px;
+    height: 40px;
+    color: gray;
+    line-height: 40px;
+    box-sizing: border-box;
+    float: left;
+    margin-right: 30px;
+}
+.table .container .pattern>.two{
+    width: 500px;
+    height: 40px;
+    display: flex;
+    justify-content: space-between;
+}
+.table .container .pattern>.two>.all{
+    line-height: 40px;
+}
+
+
+.container .rank{
+    width: 1100px;
+    height: 40px;
+    margin-left: 10px;
+    margin-right: 10px;
+    
+    /* border-bottom: 1px solid rgba(128, 128, 128, 0.247); */
+    box-sizing: border-box;
+    font-size: 13px;
+    display: flex;
+}
+.table .container .rank>.one{
+    width: 30px;
+    height: 40px;
+    color: gray;
+    line-height: 40px;
+    box-sizing: border-box;
+    float: left;
+    margin-right: 30px;
+}
+.table .container .rank>.two{
+    width: 196px;
+    height: 40px;
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+}
+.table .container .rank>.two>.all{
+    line-height: 40px;
+}
+
+.two .piece>img{
+    position: absolute;
+    bottom: 14px;
+}
+.two .time>img{
+    position: absolute;
+    bottom: 13px;
+}
+
+
+/* 图片 */
+.mainbox{
+    width: 100%;
+    height: 1600px;
+    background-color: #f8f8f8;
+    /* margin-left: 5px; */
+}
+.mainbox .container{
+    width: 1120px;
+    height:  1600px;
+    margin: 0 auto;
+    line-height: 50px;
+    box-sizing: border-box;
+    font-size: 13px;
+    background-color: white;
+
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    align-content: space-evenly;
+}
+
+.container>.pic{
+    width: 270px;
+    height:  380px;
+
+    /* background-color: rebeccapurple; */
+    position: relative;
+    
+}
+.pic>img{
+    width: 265px;
+    height:  278px;
+    
+}
+
+.pic>.text{
+    position: absolute;
+    bottom: 85px;
+    left: 20px;
+    width: 270px;
+    height:  20px;
+    color: rgb(61, 60, 60);
+}
+.mainbox .pic>.money{
+    position: absolute;
+    bottom: 65px;
+    left: 20px;
+    width: 270px;
+    height:  20px;
+}
+
+
+/* 底部 */
+.dowm1{
+    width: 100%;
+    height: 150px;
+    background-color: #222222;
+}
+.dowm1 .container{
+    width: calc(100% - (200px*2));
+    height: 150px;
+    border-bottom:2px solid #9c9c9c;
+    margin: 0 auto;
+    box-sizing: border-box;
+}
+.dowm1 .container>div{
+    width: calc((20% - 30px) + 6px);
+    height: 150px;
+    /* background-color: brown; */
+    float: left;
+    margin-right: 30px;
+}
+.dowm1 .container .last{
+    margin-right: 0;
+}
+.dowm1 .container img{
+    margin-left: 75px;
+    margin-top: 30px;
+} 
+.dowm1 .container .txt{
+    text-align: center;
+    color: white;
+}
+
+.dowm2{
+    width: 100%;
+    height: 200px;
+    background-color: #222222;
+}
+.dowm2 .container{
+    width: calc(100% - (200px*2));
+    height: 200px;
+    /* background-color: #3d403f; */
+    background-color: #222222;
+    position: relative;
+    margin: 0 auto;
+}
+
+.dimg{
+    float: left;
+    position: absolute;
+    top: 30px;
+    left: 80px;
+
+}
+.container .upul{
+    margin-left: 400px;
+    font-size: 16px;
+    color: rgb(181, 181, 181);
+}
+.container .upul>li{
+    float: left;
+    margin-left: 80px;
+    margin-top: 30PX;
+}
+.list-two{
+    position: absolute;
+    top: 60px; 
+}
+.list-two>li{
+    margin-top: 10PX;
+}
+.down3{
+    height: 60px;
+    width: 100%;
+    background-color: #333333;
+    line-height: 60px;
+    text-align: center;
+}
