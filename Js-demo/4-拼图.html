@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <style>
+            ul.stage{
+                /* 重置样式 */
+                margin: 0;
+                padding: 0;
+                list-style: none;
+    
+                width: 300px;
+                height: 300px;
+                
+                display: flex;
+                flex-wrap: wrap;
+                align-content: start;
+                position: relative;
+                
+                background-color: rgb(133, 174, 161);
+                padding: 10px;
+            }
+            ul.stage li{
+                /* 由于下面margin多了4px，所以要减掉 */
+                width: 96px;
+                height: 96px;
+                overflow: hidden;
+                
+                position: absolute;
+                left: 0;
+                top: 0;
+                transition: all 0.3s;
+                /* 上下4px 左右4px */
+                margin: 2px;
+                border-radius: 5px;
+            }
+            ul.stage li.active {
+                    box-shadow: 0 0 8px 0 #ff0000;
+                }
+            ul.stage li img{
+                /* 图片放大展示后，在li内的位置 */
+                width: 300%;
+                position: absolute;
+                left: 0;
+                top: 0;
+            }
+        </style>
+    </head>
+    <body>
+        <ul class="stage">
+            <li><img src="../1008/banner1.jpg" alt="" /></li>
+            <li><img src="../1008/banner1.jpg" alt="" /></li>
+            <li><img src="../1008/banner1.jpg" alt="" /></li>
+            <li><img src="../1008/banner1.jpg" alt="" /></li>
+            <li><img src="../1008/banner1.jpg" alt="" /></li>
+            <li><img src="../1008/banner1.jpg" alt="" /></li>
+            <li><img src="../1008/banner1.jpg" alt="" /></li>
+            <li><img src="../1008/banner1.jpg" alt="" /></li>
+            <li><img src="../1008/banner1.jpg" alt="" /></li>
+        </ul>
+
+        <script>
+            var stage = document.querySelector(".stage");
+            var lis = stage.querySelectorAll("li");
+            //获取静态的li
+            
+             //为了得到随机数（打乱拼图），所以要生成随机数组[0-8]
+            var arr = [];
+            // 依次生产元素，并添加进数组
+            for (var i = 0; i < lis.length; i++) {
+                arr.push(i);
+            }
+            arr.sort(() => Math.random() - 0.5);
+            //sort(){
+            //       return a-b; //升序!！（负数，小的数往前排）
+            //       return b-a; //降序!! (负数，大的数往前排)
+            // }
+            //Math.random() - 0.5 ：生成一个介于 -0.5 和 0.5 之间的随机数。作为sort函数的返回值，判断排列顺序。
+        //！！！由于返回的数是随机的，sort() 方法会根据这些随机数 随机地排序数组的元素
+            
+        // 1.变成9*9的拼图
+            lis.forEach((li, index) => {//li就是lis伪数组的 item（元素）
+                //1-1添加li的自定义属性 < li dataset.o="" dataset.c=""></li>
+                li.dataset.o = index;         //静态的 < li dataset.o="index"><li>
+                li.dataset.c = arr[index];   //将随机数存入数组< li dataset.o="index" dataset.c="arr[]的index"></li>
+                
+                //1-2获取该元素行数：Math.floor(下标/3)
+                li.style.top = Math.floor(li.dataset.c / 3) * 100 + 10 + "px";
+                //1-3获取该元素列数：下标%3 
+                li.style.left = (li.dataset.c % 3) * 100 + 10 + "px";
+
+                //1-4 img图片的位置
+                var img = li.querySelector("img");
+                //1-5 要左移所以是减
+                img.style.top = Math.floor(index / 3) * -96 + "px";
+                img.style.left = (index % 3) * -96 + "px";
+            });
+
+        //2. 点击事件
+            //2-2
+            var clickedLis = [];//要交换的两个元素
+            stage.onclick = function (event) { 
+            //2-1 下面筛选出，点击IMG和li事件时，会选中当前点击的li元素。其他情况的话，无操作
+                //tagName 属性在 JavaScript 中的作用是返回一个元素的标签名，这个标签名是一个大写的字符串
+                // 如果点击图片 那么就找img的父级
+                var target = event.target;
+                
+                // 事件委托是一种技术，允许你将事件监听器添加到父元素上，
+                // 而不是直接添加到可能有很多子元素的每一个上。
+                
+                
+                // 下面的筛选出IMG和li事件，会选中当前点击的li元素。其他情况的话，无操作
+                // 如果点击图片 那么就找img的父级
+                  // tagName 属性在 JavaScript 中的作用是返回一个元素的标签名，这个标签名是一个大写的字符串
+                if (target.tagName == "IMG") {
+                    target = target.parentNode;//!!!返回的父节点是大写
+                }
+                // console.log(target);
+                //2-3我做到这里发现，要获取当前的位置序号。所以2-2
+                if (target.tagName === "LI") {
+                    // 获取当前的 位置序号
+                //2-4 判断数组有两个数，就交换两个元素，
+                    // 例子:  < li dataset.o="index" dataset.c="0"></li> 和
+                    //        < li dataset.o="index" dataset.c="1"></li> 互换
+                    clickedLis.push(target);
+                    target.classList.add("active");
+
+                // 判断长度是2,两个交换
+                    if (clickedLis.length === 2) {
+                
+                        setTimeout(() => {
+                            // 交换data-c
+                            var tmp = clickedLis[0].dataset.c;
+                            
+                            // console.log("是我呀",tmp);点击图2和图1，tmp是2
+                            // console.log("是我呀",clickedLis[0])点击图2和图1，输出是li元素
+                            clickedLis[0].dataset.c = clickedLis[1].dataset.c;// 通过.dataset.c 来访问这个 data-c属性的值
+                            clickedLis[1].dataset.c = tmp;
+
+                // //2-5 交换后，考虑交换完成后的拼图 的位置
+                            clickedLis.forEach((li) => {
+                                li.style.top = Math.floor(li.dataset.c / 3) * 100 + 10 + "px";
+                                li.style.left = (li.dataset.c % 3) * 100 + 10 + "px";
+                            });
+
+                            // 等待过渡完成之后
+                            console.log(777);
+
+                            var canClick = true;
+                            
+                            // clickedLis[0]的背景颜色过渡完成后，
+                            // ontransitionend 是一个事件处理器属性，它用于在 CSS 过渡（transition）完成时，触发一个事件。
+                            clickedLis[0].ontransitionend = function () {
+                                if (canClick) {
+                                    canClick = false;
+                                    console.log(this, 123);//控制台将打印出 "this, 123"
+
+                                
+                                    // 判断是否拼图完成
+                                    // 遍历所有li 判断是不是 每一个都 data-o 和 data-c 相等
+                                    var isFinished = Array.prototype.slice.call(lis).every((li) => {
+                                        return li.dataset.o == li.dataset.c;
+                                    });
+
+                                    // 如果完成就提示
+                                    if (isFinished) {
+                                        alert("拼图完成");
+                                    }
+                                    
+
+                                    setTimeout(() => {
+                                        canClick = true;
+                                    }, 100);
+                                }
+                            };
+
+                            // debugger;
+                            // 交换完成之后清除数组
+                            clickedLis[0].classList.remove("active");
+                            clickedLis[1].classList.remove("active");
+                            clickedLis = [];
+                        }, 300);
+                    }
+                }
+            };
+        </script>
+
+    </body>
+</html>
