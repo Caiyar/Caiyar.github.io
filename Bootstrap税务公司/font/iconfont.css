@@ -1,0 +1,46 @@
+@font-face {
+  font-family: "iconfont"; /* Project id 4729722 */
+  src: url('iconfont.woff2?t=1730622517499') format('woff2'),
+       url('iconfont.woff?t=1730622517499') format('woff'),
+       url('iconfont.ttf?t=1730622517499') format('truetype');
+}
+
+/* 1. 引入第三方字体 */
+@font-face {
+  font-family: "粗英";
+  src:  url("./Avant Garde Book BT.ttf")
+  /* ,url("../font/FZBaiZWGTJW.TTF"); */
+} 
+
+.iconfont {
+  font-family: "iconfont" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-group48:before {
+  content: "\e638";
+}
+
+.icon-dianhua:before {
+  content: "\e627";
+}
+
+.icon-dianhua1:before {
+  content: "\e659";
+}
+
+.icon-gengduo:before {
+  content: "\e66c";
+}
+
+.icon-gengduo1:before {
+  content: "\e603";
+}
+
+.icon-gengduo-copy:before {
+  content: "\e66d";
+}
+

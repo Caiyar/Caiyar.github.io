@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Owl Carousel 2 Examples</title>
+    <!-- 引入 Owl Carousel 2 的 CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+    <!-- 引入 Owl Carousel 2 的主题 CSS（可选） -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
+    <!-- 自定义样式 -->
+    <style>
+        /* 自定义第一个轮播图的样式 */
+        .carousel-one .item1 {
+            margin: 10px;
+            padding: 20px;
+            background: #f4f4f4;
+            border: 1px solid #ff2a2a;
+        }
+
+        /* 自定义第二个轮播图的样式 */
+        .carousel-people .item {
+            margin: 10px;
+            padding: 20px;
+            background: #e9ecef;
+            border: 1px solid #dee2e6;
+            border-radius: 50%;
+
+            img {
+                border-radius: 50%;
+            }
+        }
+
+        .carousel-people-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 1000px;
+            background-color: aqua;
+            /* 根据需要调整容器的高度 */
+        }
+
+        /* 自定义导航按钮样式 */
+        .owl-nav button.owl-prev,
+        .owl-nav button.owl-next {
+            color: #fff;
+            background: #007bff;
+            padding: 10px;
+            margin: 5px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- 第一个轮播图 -->
+    <div class="carousel-people-container">
+
+        <div class="owl-carousel carousel-one">
+            <div class="item1">
+                <img src="images/about-1.jpg" alt="项目1">
+                <h4>Operational Excellence</h4>
+                <p>Making a mistake on your return can be costly. From missed deductions.</p>
+            </div>
+            <div class="item1">
+                <img src="images/about-2.jpg" alt="项目1">
+                <h4>Operational Excellence</h4>
+                <p>Making a mistake on your return can be costly. From missed deductions.</p>
+            </div>
+            <div class="item1">
+                <img src="images/about-3.jpg" alt="项目1">
+                <h4>Operational Excellence</h4>
+                <p>Making a mistake on your return can be costly. From missed deductions.</p>
+            </div>
+            <!-- 更多项 -->
+        </div>
+    </div>
+
+    <!-- 第二个轮播图 -->
+    <div class="owl-carousel carousel-people">
+        <div class="item">
+            <img src="images/about21.png" alt="作者1">
+        </div>
+        <div class="item">
+            <img src="images/about21.png" alt="作者1">
+        </div>
+        <div class="item">
+            <img src="images/about21.png" alt="作者1">
+        </div>
+        <div class="item">
+            <img src="images/about21.png" alt="作者1">
+        </div>
+        <!-- 更多项 -->
+    </div>
+
+    <!-- 引入 jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- 引入 Owl Carousel 2 的 JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+    <!-- 初始化 Owl Carousel -->
+    <script>
+        $(document).ready(function () {
+            // 初始化第一个轮播图，显示3个项目
+            $('.carousel-one').owlCarousel({
+                items: 3, // 显示3个项目
+                loop: true,
+                margin: 0,
+                nav: true,
+                responsive: {
+                    0: {
+                        items: 1 // 在小屏幕上显示1个项目
+                    },
+                    600: {
+                        items: 2 // 在中等屏幕上显示2个项目
+                    },
+                    1000: {
+                        items: 3 // 在大屏幕上显示3个项目
+                    }
+                }
+            });
+
+            // 初始化第二个轮播图，显示4个项目
+            $('.carousel-people').owlCarousel({
+                items: 4, // 显示4个项目
+                loop: true,
+                margin:80,
+                nav: true,
+                responsive: {
+                    0: {
+                        items: 1 // 在小屏幕上显示1个项目
+                    },
+                    600: {
+                        items: 2 // 在中等屏幕上显示2个项目
+                    },
+                    1000: {
+                        items: 4 // 在大屏幕上显示4个项目
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
