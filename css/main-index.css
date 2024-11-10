@@ -15,13 +15,22 @@ body {
   background-color: rgba(255, 255, 255, 0.43);
   border-radius: 20px;
   box-shadow: 0 10px 30px #00000020;
+  box-sizing: border-box;
 }
 .Js-demo .container .demo-box {
+  box-sizing: border-box;
+  padding: 10px;
   width: 370px;
-  height: 250px;
+  height: 300px;
   background-color: rgba(255, 255, 255, 0.43);
   border-radius: 20px;
   box-shadow: 0 10px 30px #00000020;
+}
+.Js-demo .container .demo-box img {
+  object-fit: cover;
+  width: 100%;
+  height: 250px;
+  border-radius: 20px;
 }
 .Js-demo .container .demo-box a {
   font-size: 20px;
