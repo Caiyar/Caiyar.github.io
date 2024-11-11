@@ -8,10 +8,10 @@ body {
 .Js-demo .container {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
-  row-gap: 20px;
-  /* 设置行间距 */
+  justify-content: space-evenly;
+  align-content: center;
   padding: 20px;
+  row-gap: 20px;
   background-color: rgba(255, 255, 255, 0.43);
   border-radius: 20px;
   box-shadow: 0 10px 30px #00000020;
@@ -25,18 +25,66 @@ body {
   background-color: rgba(255, 255, 255, 0.43);
   border-radius: 20px;
   box-shadow: 0 10px 30px #00000020;
+  overflow: hidden;
+}
+.Js-demo .container .demo-box .demo-img {
+  position: relative;
+  overflow: hidden;
+  border-radius: 20px;
+}
+.Js-demo .container .demo-box .demo-img .glass {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0);
+  box-shadow: 2px 2px 20px rgba(0, 0, 0, 0.3);
+  border: 1px solid #999;
+  border-radius: 20px;
+  backdrop-filter: blur(6px);
+  opacity: 0.2;
+  transition: all 0.5s;
+}
+.Js-demo .container .demo-box .demo-img .glass h1 {
+  /* 文本转换为全部大写字母 */
+  text-transform: uppercase;
+  margin: 0;
+}
+.Js-demo .container .demo-box .demo-img .glass p {
+  font-size: 18px;
+  /* capitalize：将文本中每个单词的首字母转换为大写，其余字母转换为小写。 */
+  text-transform: capitalize;
+}
+.Js-demo .container .demo-box .demo-img:hover .glass {
+  opacity: 1;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+.Js-demo .container .demo-box .demo-img:hover img {
+  border-radius: 20px;
+  transform: scale(1.3) rotate(15deg);
 }
 .Js-demo .container .demo-box img {
   object-fit: cover;
   width: 100%;
   height: 250px;
   border-radius: 20px;
+  transition: all 0.5s;
+  overflow: hidden;
 }
-.Js-demo .container .demo-box a {
+.Js-demo .container .demo-box .text {
+  text-align: center;
+}
+.Js-demo .container .demo-box .text > a {
   font-size: 20px;
   text-decoration: none;
 }
-.Js-demo .container .demo-box a:hover {
+.Js-demo .container .demo-box .text > a:hover {
   color: #f67656;
 }
 /*# sourceMappingURL=./main-index.css.map */

@@ -2,6 +2,12 @@
   font-family: "艺术";
   src: url("../font/Playfair Display.ttf");
 }
+@media only screen and (min-width: 992px) and (max-width: 1199px) {
+  .quick_contact_content h5,
+  .quick_contact_content a {
+    font-size: 16px;
+  }
+}
 body {
   box-sizing: border-box;
 }
@@ -107,6 +113,7 @@ header .elements .desktop-info .quick_contact .quick_contact_content a {
   text-decoration: none;
 }
 .welcome-area {
+  box-sizing: border-box;
   display: flex;
   align-items: center;
   height: 950px;
@@ -534,6 +541,9 @@ header .elements .desktop-info .quick_contact .quick_contact_content a {
   margin-left: 20px;
 }
 /* 控制按钮样式 */
+.owl-item.cloned {
+  width: auto !important;
+}
 .owl-nav {
   position: relative;
 }
@@ -582,7 +592,7 @@ header .elements .desktop-info .quick_contact .quick_contact_content a {
   width: 25px;
 }
 .owl-nav .prevBtn2 {
-  left: -115px !important;
+  left: -90px !important;
   top: -140px !important;
   background-color: transparent;
   border: 1px solid #ffffff;
@@ -590,7 +600,7 @@ header .elements .desktop-info .quick_contact .quick_contact_content a {
 .owl-nav .nextBtn2 {
   background-color: transparent;
   border: 1px solid #ffffff;
-  right: -125px;
+  right: -85px;
   top: -140px !important;
 }
 .pricing-area {

@@ -2,6 +2,11 @@
     font-family: "艺术";
     src: url("../font/Playfair Display.ttf");
 }
+@media only screen and (min-width: 992px) and (max-width: 1199px) {
+    .quick_contact_content h5, .quick_contact_content a {
+        font-size: 16px;
+    }
+}
 body{
     box-sizing: border-box;
 }
@@ -126,6 +131,7 @@ header {
 
 // 2
 .welcome-area {
+    box-sizing: border-box;
     display: flex;
     align-items: center;
     height: 950px;
@@ -661,6 +667,9 @@ header {
 }
 
 /* 控制按钮样式 */
+.owl-item.cloned {
+    width: auto !important;
+}
 .owl-nav {
     position: relative;
 
@@ -708,7 +717,7 @@ header {
         }
     }
     .prevBtn2{
-        left: -115px !important;
+        left: -90px  !important;
         top: -140px !important;
         background-color: transparent;
         border: 1px solid #ffffff;
@@ -716,7 +725,7 @@ header {
     .nextBtn2{
         background-color: transparent;
         border: 1px solid #ffffff;
-        right: -125px;
+        right: -85px;
         top: -140px !important;
     }
 }
