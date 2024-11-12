@@ -1,5 +1,14 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 body {
   background-image: linear-gradient(90deg, #e0c3fc 0%, #8ec5fc 100%);
+}
+.Js-demo {
+  padding: 10px;
+  margin-top: 20px;
 }
 .Js-demo .title {
   color: #fff;
@@ -9,16 +18,13 @@ body {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
-  align-content: center;
-  padding: 20px;
-  row-gap: 20px;
+  padding: 20px 0;
+  gap: 10px;
   background-color: rgba(255, 255, 255, 0.43);
   border-radius: 20px;
   box-shadow: 0 10px 30px #00000020;
-  box-sizing: border-box;
 }
 .Js-demo .container .demo-box {
-  box-sizing: border-box;
   padding: 10px;
   width: 370px;
   height: 300px;
@@ -28,6 +34,8 @@ body {
   overflow: hidden;
 }
 .Js-demo .container .demo-box .demo-img {
+  width: 350px;
+  height: 250px;
   position: relative;
   overflow: hidden;
   border-radius: 20px;
@@ -81,6 +89,8 @@ body {
   text-align: center;
 }
 .Js-demo .container .demo-box .text > a {
+  min-width: 100px;
+  /* 可以根据实际情况调整这个值 */
   font-size: 20px;
   text-decoration: none;
 }
